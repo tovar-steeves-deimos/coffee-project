@@ -47,6 +47,7 @@ function updateCoffees(e) {
     console.log(selectedRoast);
 
 
+    //adding in the all to the dropdown
     if(selectedRoast.toLowerCase() === "all"){
         filteredCoffees = coffees
     } else{
@@ -86,20 +87,19 @@ function addCoffee(e){
 }
 
 
-
+//function to search for a coffee
 function searchCoffee(e) {
     e.preventDefault();
     var filteredCoffees = [];
     var search = coffeeName.value;
     console.log(search);
-    //1 you search the coffee
-    // var filteredCoffees = [];
+
     coffees.forEach(function (coffee) {
+        //turn input into lowercase
         if (coffee.name.toLowerCase() === search.toLowerCase()){
             filteredCoffees.push(coffee);
         }
     });
-    // log the coffee found (filter out the others
     //display the updated coffees
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
@@ -115,7 +115,6 @@ var coffeeName = document.querySelector("#coffee-name");
 tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
-// submitButton.addEventListener('click', selectAllCoffee);
 
 // keyup event listener searches while you type//
 coffeeName.addEventListener('keyup', searchCoffee);
